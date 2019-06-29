@@ -2,8 +2,6 @@ const client = require ('../connection');
 
 exports.filterTweets = function(req,res){
 
-	console.log(req.body);
-
 	if(!req.body.datIni || !req.body.datFim){
 		res.render('filter', {message: 'As datas devem ser informadas!'});
 		return;
@@ -58,7 +56,6 @@ exports.showTweets = async function (req, res, next) {
 			))
 		`, [req.session.datIni, req.session.datFim]); 
 
-		//console.log(result)
 		const ids = await client.query('SELECT id, type FROM tweets_schema.evaluation');
 		
 		
@@ -70,8 +67,7 @@ exports.showTweets = async function (req, res, next) {
 
 	}
 	catch(e){
-		console.log(e)
-		next('1')//toDo: erro de acesso ao banco de dados
+		next('1')
 	}
 };
 
@@ -87,15 +83,11 @@ exports.labelTweets = async function (req, res, next) {
 
 	//inserção das rotulãções
  	try{
-		console.log(req.body.idTweet);
-		console.log(req.body.polarizacao);
 		let resultado = await client.query('INSERT INTO tweets_schema.labeling(login_id, tweets_id, evaluation_id) VALUES(1, $1, $2) RETURNING id', [req.body.idTweet, req.body.polarizacao]);
-		req.session.idsLabel.push(resultado.rows[0].id);//here
-		console.log(req.session.idsLabel);
-		exports.showTweets(req,res,next);//here
+		req.session.idsLabel.push(resultado.rows[0].id);
+		exports.showTweets(req,res,next);
 	}
 	catch(e){
-		console.log(e)
 		next('1');
 	}
 }
@@ -121,8 +113,6 @@ exports.endOfLabel = async function (req, res, next) {
 		resultado += ')';
 		
 		let text = await client.query(resultado,req.session.idsLabel);
-		
-		console.log(text);
 
 		res.render('end',{message: null, tweets: text.rows});
 
@@ -131,7 +121,6 @@ exports.endOfLabel = async function (req, res, next) {
 
 	}
 	catch(e){
-		console.log(e);
 		next('1');
 	}
 }
