@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto rotulador</title>
+</head>
+<body>
+
+    <h1>Rotulação</h1>
+
+    <form  method="POST">
+
+    <table>
+        <thead>
+          <tr>
+            <th>Tweet</th>
+            <th>Polarização</th>
+          </tr>  
+        </thead>
+
+        <tbody>
+          <tr>
+            <div>
+            <td><%= tweet.tweet_text %>
+                <input type="hidden" name="idTweet" value="<%=tweet.id %>">
+            </td>
+
+            <td>
+              <select name="polarizacao">
+                <% for (let evaluation of evaluations) { %>
+                  <option value ='<%= evaluation.id %>'><%= evaluation.type %></option>
+                  <%%>
+                <%}%>
+              </select>
+            </td>
+          </div>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        <label style="color:Blue">Tweets rotulados:<%= count %></label>
+      </p>
+      <button type="submit">Rotular</button>
+            
+    </form>
+
+        <a href="/end">Encerrar</a>
+
+</body>
+</html>

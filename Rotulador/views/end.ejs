@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto rotulador</title>
+</head>
+<body>
+
+    <h1>Rotulação encerrada!Muito Obrigado!</h1>
+
+    <% if(message) { %>
+      <p>
+        <label style="color:Red"><%= message %></label>
+      </p>
+    <%}else{%>
+
+    <p> &emsp;&emsp;&emsp;&emsp; Tweet &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Polarização</p>
+
+
+
+    <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+          </tr>  
+        </thead>
+
+        <tbody>
+          <% for (let tweet of tweets) { %>
+          <tr>
+            <div>
+              <td>
+                
+                  <p>
+                    <%= tweet.tweet_text %> &emsp;&emsp;&emsp;&emsp; <%= tweet.type %>
+                  </p>
+                    
+              </td>
+          </div>
+          </tr>
+          <%}%>
+          
+        </tbody>
+      </table>
+
+    <%}%>
+
+    <h2>Deseja rotular novamente?</h2>
+
+    <a href="/filter">Sim</a>
+    <a href="/">Não</a>
+
+</body>
+</html>

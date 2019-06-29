@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto rotulador</title>
+</head>
+
+<body>
+
+    <h1>Aplicar filtros para rotulação</h1>
+
+    <form method="POST">
+        <h2>Data:</h2>
+          <input type="date" placeholder="Início" name="datIni">
+          <input type="date" placeholder="Fim" name="datFim">
+          <button type="submit">Filtrar</button>
+    </form>
+
+    <% if(message) { %>
+      <p>
+        <label style="color:Red"><%= message %></label>
+      </p>
+    <%}%>
+
+</body>
+
+</html>

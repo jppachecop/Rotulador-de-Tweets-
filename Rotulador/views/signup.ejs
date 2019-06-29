@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto rotulador</title>
+</head>
+<body>
+
+    <h2>Cadastro<h2>
+    <form action="/signup" method="POST">
+        <input type="text" placeholder="E-mail" name="email">
+        <input type="password" placeholder="Senha" name="password">
+        <button type="submit" value="Save">Cadastrar</button>
+    </form>
+    <p>
+        <label style="color:Blue">A senha deve conter no mínimo 6 caracteres</label>
+    </p>
+
+    <% if(message) { %>
+      <p>
+        <label style="color:Red"><%= message %></label>
+      </p>
+    <%}%>
+</body>
+</html>

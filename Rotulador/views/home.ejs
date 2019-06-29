@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projeto rotulador</title>
+</head>
+<body>
+
+    <h2>Rotulador<h2>
+    <form action="/auth" method="POST">
+        <input type="text" placeholder="E-mail" name="email">
+        <input type="password" placeholder="Senha" name="password">
+        <button type="submit" value="Login">Entrar</button>
+    </form> 
+
+    <p>
+      <a href="/forgot">Esqueceu sua senha?</a> | <a href="/signup">Não possui cadastro?</a>
+    </p>
+    <% if(message) { %>
+      <p>
+        <label style="color:Red"><%= message %></label>
+      </p>
+    <%}%>
+</body>
+</html>
